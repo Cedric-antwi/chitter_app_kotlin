@@ -1,0 +1,38 @@
+<html>
+    <h1>Welcome to Chitter</h1>
+    {{#if signedIn}}
+        <p>Signed in: {{currentUser.fName}}</p>
+    <div style="background-color: whitesmoke; height: 250px; width: 600px; overflow: scroll;">
+
+        Your peeps will appear here
+        {{#each peeps}}
+            <p>{{currentUser.fName}} - {{this.peepBody}} <span style="font-size: 10px">{{this.peepDate}}</span></p>
+
+        {{/each}}
+    </div>
+    {{else}}
+        <div style="background-color: whitesmoke; height: 250px; width: 600px; overflow: scroll;">
+
+            Your peeps will appear here
+            {{#each peeps}}
+                <p>{{this.peepBody}} <span style="font-size: 10px">{{this.peepDate}}</span></p>
+
+            {{/each}}
+        </div>
+    {{/if}}
+    {{#if signedIn}}
+        {{#each users}}
+        <form method="POST" action="/signed-in/{{@index}}">
+            <label for="peep">Post a peep:</label><br>
+            <input type="text" name="peep" id="peep">
+            <input type="submit">
+        </form>
+        {{/each}}
+    {{else}}
+        <form method="POST" action="/home">
+            <label for="peep">Post a peep:</label><br>
+            <input type="text" name="peep" id="peep">
+            <input type="submit">
+        </form>
+    {{/if}}
+</html>
