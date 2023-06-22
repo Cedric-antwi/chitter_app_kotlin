@@ -1,7 +1,6 @@
 # Default ignored files
 /shelf/
 /.idea/workspace.xml
-/src/main/kotlin/com/example/.gitignore
 /.idea/.name
 /build/classes/kotlin/test/com/example/AppTest.class
 /src/test/kotlin/com/example/AppTest.kt
@@ -132,7 +131,6 @@
 /build/kotlin/compileTestKotlin/cacheable/caches-jvm/lookups/lookups.tab_i
 /build/kotlin/compileKotlin/cacheable/caches-jvm/lookups/lookups.tab_i.len
 /build/kotlin/compileTestKotlin/cacheable/caches-jvm/lookups/lookups.tab_i.len
-/src/main/kotlin/com/example/Main.kt
 /build/classes/kotlin/main/com/example/MainKt$app$1.class
 /build/classes/kotlin/main/com/example/MainKt$app$2.class
 /build/classes/kotlin/main/com/example/MainKt$app$3.class
@@ -179,7 +177,6 @@
 /build/kotlin/compileTestKotlin/classpath-snapshot/shrunk-classpath-snapshot.bin
 /build/classes/kotlin/main/com/example/SignedInViewModel.class
 /build/resources/main/com/example/SignedInViewModel.hbs
-/src/main/resources/com/example/SignedInViewModel.hbs
 /build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab
 /build/kotlin/compileTestKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab
 /build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.keystream
