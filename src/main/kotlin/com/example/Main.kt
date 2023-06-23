@@ -139,8 +139,6 @@ val app: HttpHandler = routes(
         peeps.add(0, peepMsg)
         val viewModel = HomeViewModel(peeps, currentUser = null, signedIn = false, users = users)
         val renderer = HandlebarsTemplates().HotReload("src/main/resources")
-        println("hello")
-        println("hello")
         Response(OK).body(renderer(viewModel))
     }
 
