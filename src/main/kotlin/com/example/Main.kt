@@ -137,12 +137,12 @@ val app: HttpHandler = routes(
         val formatter = DateTimeFormatter.ofPattern("HH:mm:ss")
         val time = LocalDateTime.now()
         val formattedTime = time.format(formatter)
-//        val madeBy = users.filter { it.id  }
         val peepMsg = Peep(user = null ,peepBody = peep, peepDate = formattedTime, madeBy = null)
 //        peeps.clear()
         peeps.add(0, peepMsg)
         val viewModel = HomeViewModel(peeps, currentUser = null, signedIn = false, users = users)
         val renderer = HandlebarsTemplates().HotReload("src/main/resources")
+        print("hello")
         print("hello")
         Response(OK).body(renderer(viewModel))
     }
