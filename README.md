@@ -6,7 +6,7 @@ Open this project in IntelliJ and make sure Gradle has installed dependencies.
 
 Run the `main` function in the file `src/main/kotlin/MaiN.kt` to start the server.
 
-Browse the app at http://localhost:9000
+Browse the app at http://localhost:9001
 
 
 
