@@ -88,7 +88,7 @@ val app: HttpHandler = routes(
         val sessionId = UUID.randomUUID().toString()
         // SORT OUT HERE , manage session id's etc, this seciton may actuall have to be moved to the id param version
 
-        sessionRegistry.put(sessionId, users[0].id)
+//        sessionRegistry.put(sessionId, users[0].id)
 
         val form = requiredSignUpForm(request) // requiredSignUpForm?
         val fname = requiredFnameLens(form)
