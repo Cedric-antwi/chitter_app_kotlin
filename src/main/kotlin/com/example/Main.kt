@@ -27,7 +27,7 @@ import org.http4k.routing.path
 val sessionRegistry = mutableMapOf<String, Int>()
 
 //1. Data class container
-data class Peep(val user: User?, val peepBody: String?, val peepDate: String, val madeBy: User?)
+data class Peep(val user: User?, val peepBody: String?, val peepDate: String, val madeBy: Any?)
 data class User(val fName: String, val lName: String, val email: String, val password: String, val id: String = UUID.randomUUID().toString())
 
 data class HomeViewModel(
@@ -88,7 +88,7 @@ val app: HttpHandler = routes(
         val sessionId = UUID.randomUUID().toString()
         // SORT OUT HERE , manage session id's etc, this seciton may actuall have to be moved to the id param version
 
-        sessionRegistry.put(sessionId, users[0].id)
+//        sessionRegistry.put(sessionId, users[0].id)
 
         val form = requiredSignUpForm(request) // requiredSignUpForm?
         val fname = requiredFnameLens(form)
@@ -96,10 +96,8 @@ val app: HttpHandler = routes(
         val email = requiredEmailLens(form)
         val password = requiredPasswordLens(form)
         val newUser = User(fname, lname, email, password)
-//        println("all the $users")
         val renderer = HandlebarsTemplates().HotReload("src/main/resources")
         if (newUser !in users) users.add(newUser) else println("user exists")
-        println("The new object layout: $users")
 
 
         val viewModel = HomeViewModel(peeps, true, currentUser = newUser, users)
@@ -107,7 +105,6 @@ val app: HttpHandler = routes(
     },
     "/signed-in/{id}" bind POST to {request: Request ->
         val id = request.path("id")?.toInt()
-        println(id)
         println("all the $users")
     // SORT OUT HERE, your homeviewmodel fields and if you will have users here like in above
         val form = requiredForm(request)
@@ -115,6 +112,7 @@ val app: HttpHandler = routes(
         val formatter = DateTimeFormatter.ofPattern("HH:mm:ss")
         val time = LocalDateTime.now()
         val formattedTime = time.format(formatter)
+
         val peepMsg = Peep(user = users[id!!] ,peepBody = peep, peepDate = formattedTime, users[id!!])
 //        peeps.clear()
         peeps.add(0, peepMsg)
@@ -127,7 +125,6 @@ val app: HttpHandler = routes(
     "/home" bind GET to {request: Request ->
         val renderer = HandlebarsTemplates().HotReload("src/main/resources")
         val viewModel = HomeViewModel(peeps, currentUser = null, signedIn = false, users = users)
-        println(peeps)
         Response(OK).body(renderer(viewModel))
 
     },
@@ -137,13 +134,13 @@ val app: HttpHandler = routes(
         val formatter = DateTimeFormatter.ofPattern("HH:mm:ss")
         val time = LocalDateTime.now()
         val formattedTime = time.format(formatter)
-//        val madeBy = users.filter { it.id  }
         val peepMsg = Peep(user = null ,peepBody = peep, peepDate = formattedTime, madeBy = null)
 //        peeps.clear()
         peeps.add(0, peepMsg)
         val viewModel = HomeViewModel(peeps, currentUser = null, signedIn = false, users = users)
         val renderer = HandlebarsTemplates().HotReload("src/main/resources")
-
+        println("hello")
+        println("hello")
         Response(OK).body(renderer(viewModel))
     }
 
@@ -154,7 +151,7 @@ val app: HttpHandler = routes(
 
 
 fun main() {
-    val server = app.asServer(Undertow(9000)).start()
+    val server = app.asServer(Undertow(9001)).start()
 
     println("Server started on " + server.port())
 }
